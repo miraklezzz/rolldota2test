@@ -130,7 +130,8 @@ def run_bot() -> None:
     bot = Bot(token=settings.BOT_TOKEN, parse_mode="HTML")
     dp = build_dispatcher(bot)
 
-    async def on_startup():
+    async def on_startup(_dispatcher: Dispatcher):
+        # aiogram 2.x передаёт в on_startup сам Dispatcher
         try:
             me = await bot.get_me()
             log.info("Бот запущен: @%s", me.username)
