@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="Dota Random — рулетка всех героев Dota 2. Мини-приложение Telegram.">
+  <title>Dota Random — рулетка героев</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23c8a45c' d='M16 2 30 16 16 30 2 16z'/%3E%3Cpath fill='%2308090a' d='M16 8 24 16 16 24 8 16z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <div class="brand__text">
+          <h1 class="brand__title">Dota Random</h1>
+          <p class="brand__sub" id="greeting">рулетка героев</p>
+        </div>
+      </div>
+      <div class="status" id="status" data-state="checking" role="status">
+        <span class="status__dot" aria-hidden="true"></span>
+        <span class="status__text" id="statusText">проверка движка</span>
+      </div>
+    </header>
+
+    <div class="board">
+      <section class="stage" id="stage" aria-hidden="true">
+        <div class="stage__haze" aria-hidden="true"></div>
+        <div class="stage__viewport" id="viewport">
+          <div class="track" id="track"></div>
+        </div>
+        <div class="pointer" aria-hidden="true">
+          <span class="pointer__cap pointer__cap--top"></span>
+          <span class="pointer__line"></span>
+          <span class="pointer__cap pointer__cap--bottom"></span>
+        </div>
+        <div class="stage__glow" aria-hidden="true"></div>
+      </section>
+
+      <section class="verdict" id="verdict" aria-live="polite">
+        <p class="verdict__label">выпал герой</p>
+        <h2 class="verdict__name" id="resultName">—</h2>
+        <p class="verdict__meta" id="resultMeta">нажмите «крутить», чтобы узнать судьбу</p>
+      </section>
+
+      <div class="actions">
+        <button class="btn btn--primary" id="spinBtn" type="button">
+          <span class="btn__label">Крутить</span>
+          <span class="btn__key" aria-hidden="true">space</span>
+        </button>
+        <button class="btn btn--ghost" id="historyBtn" type="button" aria-expanded="false" aria-controls="history">
+          История <span class="count" id="historyCount">0</span>
+        </button>
+      </div>
+
+      <section class="history" id="history" hidden aria-label="История спинов">
+        <div class="history__head">
+          <span>последние спины</span>
+          <span id="totalSpins">0 всего</span>
+        </div>
+        <div class="history__list" id="historyList"></div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <span id="heroCount">127 героев</span>
+      <span class="footer__dot" aria-hidden="true"></span>
+      <span>движок на вашем компьютере</span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

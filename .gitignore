@@ -1,0 +1,19 @@
+# секреты
+.env
+
+# среда
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# данные движка
+data/
+
+# логи
+*.log
+
+# редакторы / ОС
+.vscode/
+.idea/
+Thumbs.db
